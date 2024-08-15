@@ -1,0 +1,38 @@
+{
+    "name": "answer_formulate",
+    "instruction": "Answer the question using the information from the given context. Output verdict as '1' if answer is present '-1' if answer is not present in the context.",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"answer\": {\"title\": \"Answer\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"answer\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "context": "気候変動は人間の活動、特に化石燃料の燃焼による温室効果ガスの排出によって大きく左右されます。大気中の温室効果ガス濃度が上昇すると、より多くの熱が閉じ込められ、地球温暖化や気象パターンの変化につながります。",
+            "question": "人間の活動は気候変動にどのように影響するのでしょうか?",
+            "answer": {
+                "answer": "人間の活動は、主に化石燃料の燃焼による温室効果ガスの排出を通じて気候変動に寄与しています。これらの排出により、大気中の温室効果ガスの濃度が高まり、より多くの熱が閉じ込められ、地球温暖化と気象パターンの変化につながります。",
+                "verdict": 1
+            }
+        },
+        {
+            "context": "人工知能 (AI) の概念は時間とともに進化してきましたが、基本的には人間の認知機能を模倣するように設計された機械を指します。AI は学習、推論、認識が可能で、場合によっては人間のように反応できるため、ヘルスケアから自動運転車までさまざまな分野で極めて重要な役割を果たしています。",
+            "question": "人工知能の主な機能は何ですか?",
+            "answer": {
+                "answer": "人工知能は人間の認知機能を模倣するように設計されており、学習、推論、知覚、人間と同様の方法で環境に対応することなどの主要な機能を備えています。これらの機能により、AI はヘルスケアや自動運転など、さまざまな分野で極めて重要な役割を果たしています。",
+                "verdict": 1
+            }
+        },
+        {
+            "context": "ジェーン・オースティンの小説「高慢と偏見」は、エリザベス・ベネットとその家族を中心に展開します。物語は 19 世紀のイギリスの田舎を舞台にしており、結婚、道徳、誤解といった問題を扱っています。",
+            "question": "「高慢と偏見」は何年に出版されましたか？",
+            "answer": {
+                "answer": "与えられた質問に対する答えは文脈の中に存在しない",
+                "verdict": -1
+            }
+        }
+    ],
+    "input_keys": [
+        "context",
+        "question"
+    ],
+    "output_key": "answer",
+    "output_type": "json",
+    "language": "japanese"
+}

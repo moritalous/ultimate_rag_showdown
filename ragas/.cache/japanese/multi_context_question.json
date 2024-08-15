@@ -1,0 +1,27 @@
+{
+    "name": "multi_context_question",
+    "instruction": "\n    The task is to rewrite and complicate the given question in a way that answering it requires information derived from both context1 and context2. \n    Follow the rules given below while rewriting the question.\n        1. The rewritten question should not be very long. Use abbreviation wherever possible.\n        2. The rewritten question must be reasonable and must be understood and responded by humans.\n        3. The rewritten question must be fully answerable from information present in context1 and context2. \n        4. Read and understand both contexts and rewrite the question so that answering requires insight from both context1 and context2.\n        5. phrases like 'based on the provided context','according to the context?',etc are not allowed to appear in the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "植物が緑色に変わるプロセスは何ですか?",
+            "context1": "クロロフィルは植物に緑色を与え、光合成を助ける色素です。",
+            "context2": "植物における光合成は通常、葉緑体が集中している葉で起こります。",
+            "output": "植物のどの構造において、その緑化の原因となる色素がエネルギー生産を促進するのでしょうか?"
+        },
+        {
+            "question": "長方形の面積はどうやって計算するのでしょうか？",
+            "context1": "図形の面積は、図形の寸法に基づいて計算されます。長方形の場合は、長さと幅を掛け合わせます。",
+            "context2": "長方形は 4 つの辺を持ち、向かい合う辺の長さはそれぞれ同じです。四辺形の一種です。",
+            "output": "等しい反対の数を掛け合わせると四辺形の面積が得られますか?"
+        }
+    ],
+    "input_keys": [
+        "question",
+        "context1",
+        "context2"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "japanese"
+}

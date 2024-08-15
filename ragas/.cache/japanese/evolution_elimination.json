@@ -1,0 +1,38 @@
+{
+    "name": "evolution_elimination",
+    "instruction": "Check if the given two questions are equal based on following requirements:\n    1. They have same constraints and requirements.\n    2. They have same depth and breadth of the inquiry.\n    Output verdict as 1 if they are equal and 0 if they are not",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"reason\": {\"title\": \"Reason\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"reason\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "question1": "気候変動の主な原因は何ですか?",
+            "question2": "地球温暖化の原因となる要因は何ですか?",
+            "output": {
+                "reason": "どちらの質問も環境問題を扱っていますが、「気候変動」は「地球温暖化」よりも幅広い変化を包含しており、調査の深さも異なります。",
+                "verdict": 0
+            }
+        },
+        {
+            "question1": "植物では光合成はどのように機能するのでしょうか?",
+            "question2": "植物における光合成のプロセスについて説明していただけますか？",
+            "output": {
+                "reason": "どちらの質問も植物の光合成プロセスの説明を求めており、回答に対する深さ、広さ、要件は同じです。",
+                "verdict": 1
+            }
+        },
+        {
+            "question1": "定期的な運動の健康上の利点は何ですか?",
+            "question2": "健康のために定期的に運動することの利点を挙げてもらえますか?",
+            "output": {
+                "reason": "どちらの質問も、定期的な運動が健康に与える良い影響についての情報を求めています。健康上の利点を列挙する際には、同様のレベルの詳細さが求められます。",
+                "verdict": 1
+            }
+        }
+    ],
+    "input_keys": [
+        "question1",
+        "question2"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "japanese"
+}

@@ -1,0 +1,35 @@
+{
+    "name": "keyphrase_extraction",
+    "instruction": "Extract the top 3 to 5 keyphrases from the provided text, focusing on the most significant and distinctive aspects. ",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "text": "ブラックホールとは、重力が非常に強いため、光やその他の電磁波を含め、何ものもそこから逃れるのに十分なエネルギーを持たない時空の領域です。一般相対性理論では、十分にコンパクトな質量によって時空が変形し、ブラックホールが形成されると予測されています。",
+            "output": {
+                "keyphrases": [
+                    "ブラックホール",
+                    "時空の領域",
+                    "強い重力",
+                    "光と電磁波",
+                    "一般相対性理論"
+                ]
+            }
+        },
+        {
+            "text": "万里の長城は、中国北部にある、約 500 年前に建てられた古代の城壁と要塞群です。この巨大な城壁は 13,000 マイル以上にも及び、古代中国の技術者の技術と粘り強さの証です。",
+            "output": {
+                "keyphrases": [
+                    "万里の長城",
+                    "古代の要塞",
+                    "中国北部"
+                ]
+            }
+        }
+    ],
+    "input_keys": [
+        "text"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "japanese"
+}

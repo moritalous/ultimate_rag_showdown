@@ -1,0 +1,29 @@
+{
+    "name": "seed_question",
+    "instruction": "Generate a question that can be fully answered from given context. The question should be formed using topic",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "context": "植物の光合成では、クロロフィルやその他の色素を使って光を吸収し、光エネルギーを化学エネルギーに変換します。このプロセスは、植物の成長と酸素の生成に不可欠です。",
+            "keyphrase": "光合成",
+            "question": "植物の成長における光合成の役割は何ですか?"
+        },
+        {
+            "context": "18 世紀に始まった産業革命は、工場の発展と都市化をもたらし、歴史の大きな転換点となりました。",
+            "keyphrase": "産業革命",
+            "question": "産業革命はどのようにして歴史の大きな転換点となったのでしょうか?"
+        },
+        {
+            "context": "蒸発のプロセスは水循環において重要な役割を果たし、水を液体から蒸気に変えて大気中に上昇させます。",
+            "keyphrase": "蒸発",
+            "question": "水循環において蒸発はなぜ重要なのでしょうか?"
+        }
+    ],
+    "input_keys": [
+        "context",
+        "keyphrase"
+    ],
+    "output_key": "question",
+    "output_type": "str",
+    "language": "japanese"
+}

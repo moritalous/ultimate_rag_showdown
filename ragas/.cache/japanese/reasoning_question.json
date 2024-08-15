@@ -1,0 +1,24 @@
+{
+    "name": "reasoning_question",
+    "instruction": "Complicate the given question by rewriting question into a multi-hop reasoning question based on the provided context.\n    Answering the question should require the reader to make multiple logical connections or inferences using the information available in given context.\n    Rules to follow when rewriting question:\n    1. Ensure that the rewritten question can be answered entirely from the information present in the contexts.\n    2. Do not frame questions that contains more than 15 words. Use abbreviation wherever possible.\n    3. Make sure the question is clear and unambiguous.\n    4. phrases like 'based on the provided context','according to the context',etc are not allowed to appear in the question.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "フランスの首都は何ですか？",
+            "context": "フランスは西ヨーロッパの国です。パリ、リヨン、マルセイユなど、いくつかの都市があります。パリはエッフェル塔やルーブル美術館などの文化的ランドマークで知られているだけでなく、行政の中心地としても知られています。",
+            "output": "エッフェル塔と行政の中心地を結び、その両方の役割を果たしている都市はどれでしょうか?"
+        },
+        {
+            "question": "Python の append() メソッドは何をしますか?",
+            "context": "Python では、リストは複数の項目を 1 つの変数に格納するために使用されます。リストは、データのコレクションを格納するために使用される 4 つの組み込みデータ型の 1 つです。append() メソッドは、リストの末尾に 1 つの項目を追加します。",
+            "output": "リストが変数コレクションを表す場合、どのメソッドがリストを 1 つの項目だけ拡張しますか?"
+        }
+    ],
+    "input_keys": [
+        "question",
+        "context"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "japanese"
+}

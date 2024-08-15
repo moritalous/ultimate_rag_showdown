@@ -1,0 +1,48 @@
+{
+    "name": "filter_question",
+    "instruction": "\nAsses the given question for clarity and answerability given enough domain knowledge, consider the following criteria:\n1.Independence: Can the question be understood and answered without needing additional context or access to external references not provided within the question itself? Questions should be self-contained, meaning they do not rely on specific documents, tables, or prior knowledge not shared within the question.\n2.Clear Intent: Is it clear what type of answer or information the question seeks? The question should convey its purpose without ambiguity, allowing for a direct and relevant response.\nBased on these criteria, assign a verdict of \"1\" if a question is specific, independent, and has a clear intent, making it understandable and answerable based on the details provided. Assign \"0\" if it fails to meet one or more of these criteria due to vagueness, reliance on external references, or ambiguity in intent.\nProvide feedback and a verdict in JSON format, including suggestions for improvement if the question is deemed unclear. Highlight aspects of the question that contribute to its clarity or lack thereof, and offer advice on how it could be reframed or detailed for better understanding and answerability.\n",
+    "output_format_instruction": "The output should be a well-formatted JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {\"properties\": {\"foo\": {\"title\": \"Foo\", \"description\": \"a list of strings\", \"type\": \"array\", \"items\": {\"type\": \"string\"}}}, \"required\": [\"foo\"]}\nthe object {\"foo\": [\"bar\", \"baz\"]} is a well-formatted instance of the schema. The object {\"properties\": {\"foo\": [\"bar\", \"baz\"]}} is not well-formatted.\n\nHere is the output JSON schema:\n```\n{\"type\": \"object\", \"properties\": {\"feedback\": {\"title\": \"Feedback\", \"type\": \"string\"}, \"verdict\": {\"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"feedback\", \"verdict\"]}\n```\n\nDo not return any preamble or explanations, return only a pure JSON string surrounded by triple backticks (```).",
+    "examples": [
+        {
+            "question": "宇宙に関する発見とは何でしょうか?",
+            "output": {
+                "feedback": "この質問は漠然として範囲が広すぎます。特定の側面、時間枠、または関心のある状況を指定せずに「宇宙に関する発見」を求めています。これは、新しい天体の発見から宇宙旅行技術の進歩まで、幅広いトピックを指す可能性があります。明確さと回答可能性を高めるには、質問で発見の種類 (天文学的、技術的など)、時間枠 (最近、歴史的など)、または状況 (特定の研究調査または宇宙ミッション内など) を指定する必要があります。",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "context1 と context2 の結果に基づいて、ALMA-13B-R は WMT'23 研究における他の翻訳モデルと比較してどのように機能するのでしょうか?",
+            "output": {
+                "feedback": "この質問は、ALMA-13B-R モデルのパフォーマンスを WMT'23 研究内の他の翻訳モデルと比較するよう求めており、具体的には「コンテキスト 1」と「コンテキスト 2」の結果に言及しています。関心のあるモデル (ALMA-13B-R) と研究 (WMT'23) は明確に指定されていますが、「コンテキスト 1」と「コンテキスト 2」にアクセスして理解していることを前提としていますが、これらのコンテキストが何を意味するのかは説明されていません。このため、WMT'23 研究やこれらの特定のコンテキストに精通していない人にとっては、質問が不明確になっています。より幅広い対象者に対して明確さと回答可能性を向上させるには、「コンテキスト 1」と「コンテキスト 2」を定義または説明するか、これらのコンテキストでの比較に使用される基準を説明すると良いでしょう。",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "評価スコア、翻訳モデルのパフォーマンス、および参照を上回る成功率の点で、KIWI-XXL と XCOMET は表 1 のゴールド スタンダード参照とどのように比較されますか?",
+            "output": {
+                "feedback": "この質問は、KIWI-XXL モデルと XCOMET モデルを「表 1」のゴールド スタンダード参照と比較することを求めており、評価スコア、翻訳モデルのパフォーマンス、参照を上回る成功率に重点が置かれています。比較の対象となるモデルと基準が指定されているため、意図は明確です。ただし、この質問では「表 1」へのアクセスを前提としていますが、その内容やコンテキストは提供されていないため、ソース マテリアルに直接アクセスできない人にとっては不明瞭です。一般の読者にとってより明確で回答しやすいものにするためには、この質問に「表 1」の内容や主な調査結果の簡単な説明を含めるか、特定の未公開文書に依存しない方法で質問を構成する必要があります。",
+                "verdict": 0
+            }
+        },
+        {
+            "question": "OpenMoE の UL2 トレーニング目標の構成と、それが事前トレーニングに適した選択肢である理由は何ですか?",
+            "output": {
+                "feedback": "この質問は、OpenMoE フレームワーク内での UL2 トレーニング目標の構成と、それが事前トレーニングに適している理由を尋ねています。関心のあるトピック (UL2 トレーニング目標、OpenMoE) を明確に指定し、構成と事前トレーニングでの有効性の理由の両方に関する詳細な情報を求めています。ただし、この質問は、OpenMoE と UL2 の特定の用語やコンテキストに馴染みのない人にとっては難しいかもしれません。より明確で回答しやすいように、質問に OpenMoE と UL2 トレーニング目標に関する簡単な説明やコンテキストを含めるか、質問が言及する事前トレーニングの有効性の側面 (効率、精度、一般化など) を明確にすると役立ちます。",
+                "verdict": 1
+            }
+        },
+        {
+            "question": "提供されたコンテキストに基づく、OpenMoE の UL2 トレーニング目標の詳細な構成は何ですか?",
+            "output": {
+                "feedback": "この質問は、OpenMoE フレームワーク内の UL2 トレーニング目標の構成に関する詳細な情報を求めており、「提供されたコンテキスト」に言及していますが、クエリ内にこのコンテキストを実際に含めたり説明したりしていません。これにより、指定されていないコンテキストにアクセスできない人にとっては質問が不明確になります。質問が明確で回答可能なものになるには、関連するコンテキストを質問内に直接含めるか、外部情報を必要としない方法で構成する必要があります。関心のある構成の特定の側面 (損失関数、データ拡張手法など) を詳細に説明することでも、クエリを明確にすることができます。",
+                "verdict": 0
+            }
+        }
+    ],
+    "input_keys": [
+        "question"
+    ],
+    "output_key": "output",
+    "output_type": "json",
+    "language": "japanese"
+}

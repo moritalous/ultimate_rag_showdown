@@ -1,0 +1,21 @@
+{
+    "name": "compress_question",
+    "instruction": "Rewrite the following question to make it more indirect and shorter while retaining the essence of the original question.\n    The goal is to create a question that conveys the same meaning but in a less direct manner. The rewritten question should shorter so use abbreviation wherever possible.",
+    "output_format_instruction": "",
+    "examples": [
+        {
+            "question": "地球と月の間の距離はどれくらいですか？",
+            "output": "月は地球からどれくらい離れていますか？"
+        },
+        {
+            "question": "チョコレートケーキを焼くのに必要な材料は何ですか?",
+            "output": "チョコレートケーキには何が必要ですか？"
+        }
+    ],
+    "input_keys": [
+        "question"
+    ],
+    "output_key": "output",
+    "output_type": "str",
+    "language": "japanese"
+}
