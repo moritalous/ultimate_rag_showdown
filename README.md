@@ -12,7 +12,7 @@ aws configure
 
 .env.sampleを参考にしてください
 
-＊Poetryのインストール
+* Poetryのインストール
 
 ```shell
 conda install conda-forge::poetry
